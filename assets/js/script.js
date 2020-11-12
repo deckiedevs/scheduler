@@ -26,7 +26,7 @@ var loadTasks = function() {
 }
 
 var addTask = function(taskTime, taskText) {
-    var taskItem = $("<p>").addClass("m-2").text(taskText)
+    var taskItem = $("<p>").addClass("m-2 task-item").text(taskText)
 
     $("#hr-" + taskTime).find(".time-block").append(taskItem)
 }
@@ -47,7 +47,7 @@ $(".time-slot").on("click", ".time-block", function() {
 });
 
 // save button function
-$(".saveBtn").on("click", function() {
+$(".save-btn").on("click", function() {
     var textArea = $(this).closest(".time-slot").find(".form-control")
     
     // updates task text
@@ -55,7 +55,7 @@ $(".saveBtn").on("click", function() {
 
     var taskP = $("<div>")
         .addClass("col-10 time-block")
-        .html("<p class='m-2'>" + text + "</p>");
+        .html("<p class='m-2 task-item'>" + text + "</p>");
 
     textArea.replaceWith(taskP);
 
@@ -95,6 +95,12 @@ var auditTime = function() {
         }
     }
 }
+
+// clear scheduler
+$(".reset-btn").on("click", function() {
+    localStorage.clear();
+    $(".task-item").remove(); 
+});
 
 // displays current time
 $("#currentDay").text(moment().format("h:mm A on dddd, MMMM D, YYYY"))
