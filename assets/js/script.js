@@ -74,6 +74,35 @@ $(".saveBtn").on("click", function() {
 
     tasks[index] = taskObj;
     saveTasks();
+    auditTime();
 })
 
+var auditTime = function() {
+    var currentHr = moment().hour();
+
+    for (i = 9; i < 18; i++) {
+        var timeSlotEl = $("#hr-" + i).find(".time-block");
+        timeSlotEl.removeClass("past present future");
+
+        if (currentHr < i) {
+            timeSlotEl.addClass("future");
+        }
+        else if (currentHr > i) {
+            timeSlotEl.addClass("past");
+        }
+        else {
+            timeSlotEl.addClass("present");
+        }
+    }
+}
+
+// displays current time
+$("#currentDay").text(moment().format("h:mm A on dddd, MMMM D, YYYY"))
+setInterval(function() {
+    $("#currentDay").text(moment().format("h:mm A on dddd, MMMM D, YYYY"))
+}, 60000)
+
+setInterval(auditTime, 300000); 
+
 loadTasks();
+auditTime();
