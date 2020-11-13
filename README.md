@@ -23,6 +23,7 @@ Allows the user to save a schedule for a standard 9AM - 5PM work day.
 * JQuery 
 * CSS3
 * BootStrap 4
+* Moment.js
 
 ## Web Page
 ![Work Day Scheduler](./images/screenshot.png)
