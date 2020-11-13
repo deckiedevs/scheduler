@@ -26,7 +26,7 @@ Allows the user to save a schedule for a standard 9AM - 5PM work day.
 * Moment.js
 
 ## Web Page
-![Work Day Scheduler](./images/screenshot.png)
+![Work Day Scheduler](./assets/images/screenshot.png)
 [Deployed Application](https://deckiedevs.github.io/scheduler/)
 
 ## Task List
