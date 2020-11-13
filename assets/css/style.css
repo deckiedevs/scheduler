@@ -11,6 +11,7 @@ body {
 
 textarea {
   background: transparent;
+  color: transparent;
   border: none;
   resize: none;
   color: #000000;

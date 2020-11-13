@@ -31,12 +31,13 @@ var addTask = function(taskTime, taskText) {
     $("#hr-" + taskTime).find(".time-block").append(taskItem)
 }
 
-var saveTasks = function(event) {
+var saveTasks = function() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 // edit task item on click
 $(".time-slot").on("click", ".time-block", function() {
+    console.log($(this))
     var text = $(this).text().trim();
     var textInput = $("<textarea>")
         .addClass("col-10 form-control")
@@ -102,13 +103,12 @@ $(".reset-btn").on("click", function() {
     $(".task-item").remove(); 
 });
 
-// displays current time
-$("#currentDay").text(moment().format("h:mm A on dddd, MMMM D, YYYY"))
+// displays current time and updates time-block
+$("#currentDay").text("It is currently " + moment().format("h:mm A on dddd, MMMM D" + "."))
 setInterval(function() {
-    $("#currentDay").text(moment().format("h:mm A on dddd, MMMM D, YYYY"))
+    $("#currentDay").text("It is currently " + moment().format("h:mm A on dddd, MMMM D" + "."))
+    auditTime();
 }, 60000)
-
-setInterval(auditTime, 300000); 
 
 loadTasks();
 auditTime();
